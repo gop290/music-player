@@ -1,133 +1,32 @@
-import { useEffect, useState } from "react";
-import Card from "./Memory-card/Card";
-import GameHeader from "./Memory-card/GameHeader";
-import Winmesage from "./Memory-card/Winmesage";
+import React from "react";
+import MusicPlayer from "../component/MusicPlayer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllSongs from "../component/AllSongs";
+import { Playlists } from "../component/Playlists";
+import { MusicProvider } from "../context/MusicContext";
+import Navbar from "../component/Navbar";
 
-const cardValues = [
-  "🍎",
-  "🍌",
-  "🍇",
-  "🍊",
-  "🍓",
-  "🥝",
-  "🍑",
-  "🍒",
-  "🍎",
-  "🍌",
-  "🍇",
-  "🍊",
-  "🍓",
-  "🥝",
-  "🍑",
-  "🍒",
-];
 function App() {
-  const [cards, setCards] = useState([]);
-  const [flippedCards, setFlippedCards] = useState([]);
-  const [matchedCards, setMathedCards] = useState([]);
-  const [score, setScore] = useState(0);
-  const [moves, setMoves] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
-  const ShuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-  const initializeGame = () => {
-    // sufff
-    const shuffled = ShuffleArray(cardValues);
-    const finalCard = shuffled.map((value, index) => ({
-      id: index,
-      value,
-      isFlipped: false,
-      isMatched: false,
-    }));
-    setCards(finalCard);
-    setMoves(0);
-    setScore(0);
-    setIsLocked(false);
-    setMathedCards([]);
-    setFlippedCards([]);
-  };
-  useEffect(() => {
-    initializeGame();
-  }, []);
-  const handleCardClick = (card) => {
-    if (
-      card.isFlipped ||
-      card.isMatched ||
-      isLocked ||
-      flippedCards.length === 2
-    ) {
-      return;
-    }
-    const newCards = cards.map((c) => {
-      if (c.id === card.id) {
-        return { ...c, isFlipped: true };
-      } else {
-        return c;
-      }
-    });
-    setCards(newCards);
-    const newFlippedCards = [...flippedCards, card.id];
-    setFlippedCards(newFlippedCards);
-    if (flippedCards.length === 1) {
-      setIsLocked(true);
-
-      const firstCard = cards.find((c) => c.id === flippedCards[0]);
-
-      if (firstCard.value === card.value) {
-        setTimeout(() => {
-          setMathedCards((prev) => [...prev, firstCard.id, card.id]);
-
-          setScore((prev) => prev + 1);
-
-          setCards((prev) =>
-            prev.map((c) => {
-              if (c.id === card.id || c.id === firstCard.id) {
-                return { ...c, isMatched: true };
-              }
-
-              return c;
-            }),
-          );
-
-          setFlippedCards([]);
-          setIsLocked(false);
-        }, 500);
-      } else {
-        setTimeout(() => {
-          const flippedBackCard = newCards.map((c) => {
-            if (newFlippedCards.includes(c.id) || c.id === card.id) {
-              return { ...c, isFlipped: false };
-            } else {
-              return c;
-            }
-          });
-          setCards(flippedBackCard);
-          setFlippedCards([]);
-          setIsLocked(false);
-        }, 1000);
-      }
-    }
-    setMoves((prev) => prev + 1);
-  };
-  const isGameComplete = matchedCards.length === cardValues.length;
-
   return (
     <>
-      <div className="app">
-        <GameHeader score={score} moves={moves} onReset={initializeGame} />
-        {isGameComplete && <Winmesage moves={moves} />}
-        <div className="cards-grid">
-          {cards.map((card) => (
-            <Card card={card} onClick={handleCardClick} />
-          ))}
-        </div>
-      </div>
+      <BrowserRouter>
+        <MusicProvider>
+          <div className="app">
+            <Navbar />
+            <main className="app-main">
+              <main className="player-section">
+                <MusicPlayer />
+              </main>
+              <main className="content-section">
+                <Routes>
+                  <Route path="/" element={<AllSongs />} />
+                  <Route path="/playlists" element={<Playlists />} />
+                </Routes>
+              </main>
+            </main>
+          </div>
+        </MusicProvider>
+      </BrowserRouter>
     </>
   );
 }
