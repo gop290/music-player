@@ -7,72 +7,56 @@ const songs = [
     id: 1,
     title: "Surah Qaf",
     artist: "Ibrahim Abdella",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Heart-Touching Quran Recitation by Qari Ibrahim Abdella  Surah Qaf 🥰🇪🇹🇪🇹🇪🇹 - Noon  Quran ن القرآن.mp3",
+    url: import.meta.env.BASE_URL + "songs/Qaf.mp3",
     duration: "3:00",
   },
   {
     id: 2,
     title: "SurahFurqan",
     artist: "IbrahimIdris",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Surah Furqan (Full Surah)  Qari Ibrahim Idris  English Translation - Ibrahim Idris.mp3",
+    url: import.meta.env.BASE_URL + "songs/Furqan.mp3",
     duration: "20:20",
   },
   {
     id: 3,
     title: "SurahAn-Naba",
     artist: "AbdulRahmanMossad",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Surah An-Naba by Abdul Rahman Mossad - Abdulrahman mossad عبدالرحمن مسعد.mp3",
+    url: import.meta.env.BASE_URL + "songs/Naba.mp3",
     duration: "5:24",
   },
   {
     id: 4,
     title: "SurahAl-Baqarah",
     artist: "Dr.MisbahSani",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Surah Al-Baqarah Full Recitation  Powerful Protection & Blessings, Qari. DR Misbah sani - Dr.Misbah Sani.mp3",
+    url: import.meta.env.BASE_URL + "songs/Baqarah.mp3",
     duration: "10:42",
   },
   {
     id: 5,
     title: "QuranRecitationmoon",
     artist: "NewBeautiful",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/NEW  beautiful Quran recitation  heart soothing voice - bestryful.mp3",
+    url: import.meta.env.BASE_URL + "songs/bestryful.mp3",
     duration: "13:10",
   },
   {
     id: 6,
     title: "SurahAl-Ahzabسورة الأحزاب",
     artist: "omarHisham",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Surah Al-Ahzab سورة الأحزاب (Pure Tranquility) Omar Hisham عمر هشام العربي (formerly New style) - Omar Hisham Al Arabi.mp3",
+    url: import.meta.env.BASE_URL + "songs/Ahzab.mp3",
     duration: "23:26",
   },
   {
     id: 7,
     title: "SurahMaryam",
     artist: "omarHisham",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/Surah Maryam (Be Heaven) سورة مريم  Omar Hisham Al Arabi - Omar Hisham Al Arabi.mp3",
+    url: import.meta.env.BASE_URL + "songs/Maryam.mp3",
     duration: "19:00",
   },
   {
     id: 8,
     title: "سورة لقمانOmarHisham-OmarHishamAlArabi",
     artist: "omarHisham",
-    url:
-      import.meta.env.BASE_URL +
-      "songs/quran1.mp3",
+    url: import.meta.env.BASE_URL + "songs/Luqman.mp3",
     duration: "12:19",
   },
 ];
