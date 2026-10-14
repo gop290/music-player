@@ -72,7 +72,7 @@ const songs = [
     artist: "omarHisham",
     url:
       import.meta.env.BASE_URL +
-      "songs/Surah Luqman (Tranquility) سورة لقمان Omar Hisham - Omar Hisham Al Arabi.mp3",
+      "songs/quran1.mp3",
     duration: "12:19",
   },
 ];
